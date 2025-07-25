@@ -1,0 +1,180 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e4e4;
+    color: #333;
+    background-image: url(/logo/anniv2.jpg);
+    background-size: cover;
+}
+
+.explore-link {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #007bff;
+    /* Minimalistic blue */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.explore-link:hover {
+    color: #0056b3;
+    /* Slightly darker blue on hover */
+    text-decoration: underline;
+}
+
+
+header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgba(255, 165, 171, 0.8);
+}
+
+h1 {
+    font-size: 48px;
+    margin: 0;
+    padding-bottom: 30px;
+    color: #bf0603;
+}
+
+h2 {
+    font-size: 24px;
+    color: #bf0603;
+    margin: 30px 0;
+}
+
+.underline {
+    text-decoration: none;
+    position: relative;
+}
+
+.underline::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.container {
+    max-width: 600px;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="date"]:hover,
+input[type="time"]:hover,
+input[type="number"]:hover,
+input[type="range"]:hover,
+input[type="text"]:hover,
+select:hover {
+    border-color: #e4428b;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="range"],
+input[type="text"],
+select {
+    width: 50%;
+    padding: 10px;
+    border: 2px solid #c1121f;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+
+}
+
+about-you-container {
+    background: linear-gradient(to right, #ff4b5c, #ff758c);
+    /* Red gradient */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.about-you-container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.about-you-container p {
+    font-size: 16px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.about-you-container i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+button {
+    background-color: #e63946;
+    color: #f1faee;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #370617;
+    /* Slightly darker on hover */
+    color: #ffffff;
+    font-weight: bold;
+    transform: scale(1.05);
+    box-shadow: 0 0.7em 0.7em -0.6em gray;
+    transform: translateY(-0.25em);
+    /* Scale effect on hover */
+}
+
+.home-button {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    color: #003049;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #4f000b;
+    color: #ce4257;
+
+}

@@ -1,0 +1,146 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0e4e4;
+    /* Light pastel background */
+    color: #333;
+    background-image: url(/logo/corporate.jpg );
+}
+
+header {
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgba(221, 161, 94, 0.8);
+    /* Soft pastel pink */
+}
+
+h1 {
+    font-size: 48px;
+    margin: 0;
+    padding-bottom: 30px;
+    color: #283618;
+
+}
+
+h2 {
+    font-size: 24px;
+    color: #606c38;
+    /* Darker pastel pink */
+    margin: 30px 0 30px;
+}
+
+.underline {
+    text-decoration: none;
+    position: relative;
+}
+
+.underline::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+}
+
+.container {
+    max-width: 600px;
+    /* Limit container width for better readability */
+    width: 80%;
+    /* Responsive width */
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    /* White background for form */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="date"],
+input[type="time"],
+input[type="number"],
+input[type="range"],
+input[type="text"],
+select {
+    width: 50%;
+    /* Reduced width to make the input boxes shorter */
+    padding: 10px;
+    /* Keep padding for comfort */
+    border: 2px solid #f4a261;
+    /* Soft border color */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Font size for readability */
+    transition: border-color 0.3s;
+    /* Border color transition */
+}
+
+input[type="date"]:hover,
+input[type="time"]:hover,
+input[type="number"]:hover,
+input[type="range"]:hover,
+input[type="text"]:hover,
+select:hover {
+    border-color: #e76f51;
+    /* Change border color on hover */
+}
+
+button {
+    background-color: #ddbea9;
+    /* Soft pastel pink */
+    color: #333;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #cb997e;
+    /* Slightly darker on hover */
+    color: #ffffff;
+    font-weight: bold;
+    transform: scale(1.05);
+    transform: translateY(-0.25em);
+    box-shadow: 0 0.7em 0.7em -0.6em gray;
+    /* Scale effect on hover */
+}
+
+.home-button {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    color: #003049;
+    text-decoration: none;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-button:hover {
+    background-color: #5e503f;
+    color: #eae0d5;
+
+}

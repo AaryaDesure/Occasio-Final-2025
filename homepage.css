@@ -1,0 +1,303 @@
+@font-face {
+    font-family: 'Playwright Cuba';
+    src: url('fonts/PlaywriteCU-VariableFont_wght.ttf') format('truetype');
+    /* Adjust the path to your file */
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+.pageUnderline {
+    width: 100px;
+    height: 2px;
+    position: absolute;
+    content: '';
+    top: 85px;
+    right: 0;
+    background-color: #000;
+}
+
+
+/* Use the font in your CSS */
+.sitename h1 {
+    font-family: "Archivo Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: rgb(0, 17, 255);
+}
+
+.wedding-back-text {
+    display: flex;
+    border-width: 10px;
+    border: solid black;
+    align-items: center;
+
+}
+
+.wedding-back-text:hover {
+    border-radius: 10px;
+    transform: scale(1.05);
+    box-shadow: 0 0.8em 0.8em -0.8em black;
+}
+
+.sitelogo {
+    width: 310px;
+}
+
+body {
+    padding-bottom: 1000px;
+}
+
+.website-logo {
+    width: 550px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 15px 0 0 30px;
+}
+
+@keyframes slideshow {
+    0% {
+        background-image: url('./logo/1.jpg');
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+        /* Fade-in first image */
+    }
+
+    20% {
+        background-image: url('./logo/1.jpg');
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0;
+        /* Fade-out first image */
+    }
+
+    26% {
+        background-image: url('./logo/banquethall.jpg');
+        opacity: 0;
+    }
+
+    31% {
+        opacity: 1;
+        /* Fade-in second image */
+    }
+
+    45% {
+        background-image: url('./logo/banquethall.jpg');
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+        /* Fade-out second image */
+    }
+
+    51% {
+        background-image: url('./logo/3.jpg');
+        opacity: 0;
+    }
+
+    56% {
+        opacity: 1;
+        /* Fade-in third image */
+    }
+
+    70% {
+        background-image: url('./logo/3.jpg');
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0;
+        /* Fade-out third image */
+    }
+
+    76% {
+        background-image: url('./logo/wedding-back.jpg');
+        opacity: 0;
+    }
+
+    81% {
+        opacity: 1;
+        /* Fade-in fourth image */
+    }
+
+    95% {
+        background-image: url('./logo/wedding-back.jpg');
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+
+    }
+}
+
+
+
+.wedding-back {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    animation: slideshow 28s infinite;
+
+    margin: 140px 0 0 0;
+}
+
+
+.wedding-back-text {
+    color: black;
+    background-color: rgba(227, 213, 202, 0.7);
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 75px;
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    opacity: 1;
+
+}
+
+.social-media-icons {
+
+    border: 2px solid #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+
+}
+
+
+.social-media-icons a {
+
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-media-icons a:hover {
+    color: #007bff;
+
+}
+
+.social-media-icons i {
+    font-size: 24px;
+}
+
+.header,
+.left,
+.right {
+    background-color: #f5f5f5;
+    color: black;
+
+}
+
+.header.dark-theme,
+.left.dark-theme,
+.right.dark-theme {
+    background-color: black;
+    color: white;
+
+}
+
+.header.dark-theme a,
+.left.dark-theme a,
+.right.dark-theme a {
+    background-color: black;
+    color: white;
+
+}
+
+.header.dark-theme a:hover,
+.left.dark-theme a:hover,
+.right.dark-theme a:hover {
+    background-color: gray;
+
+}
+
+.theme-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid black;
+    background-color: #f5f5f5;
+    color: black;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.theme-button.dark-theme {
+    background-color: black;
+    border: gray solid;
+
+    color: white;
+}
+
+.text-box.show,
+.image-box.show {
+    opacity: 1;
+    transform: translateY(0);
+    /* Move the elements up to their original position */
+}
+
+.home-slide-first {
+    margin-top: 0px;
+    text-align: center;
+}
+
+.text-box {
+    padding: 20px;
+    margin: 20vh auto 0;
+    /* Start appearing after scrolling down */
+    max-width: 600px;
+    /* Limit the width of the container */
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    /* Initial downward position */
+    transition: all 0.5s ease-out;
+    /* Smooth animation */
+    margin-top: 50px;
+    height: 60vh;
+}
+
+.text-box.show {
+    opacity: 1;
+    transform: translateY(0);
+    /* Slide up to its original position */
+}
+
+.home-slide-first p {
+    line-height: 1.6;
+    /* Improve readability */
+    font-size: 20px;
+
+}
+
+.home-slide-first {
+    background-color: #ffcad4;
+    position: relative;
+
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+
+
+
+}

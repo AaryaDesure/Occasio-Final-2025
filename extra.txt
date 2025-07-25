@@ -1,0 +1,30 @@
+<button id="scroll-to-music"
+                style="font-size: 18px; padding: 10px; background-color: #1DB954; color: white; border: none; cursor: pointer; border-radius: 50px; padding: 10px 20px;">
+                <i class="fab fa-spotify"></i>
+            </button>
+            <script>
+                document.getElementById('scroll-to-music').addEventListener('click', function () {
+                    var player = document.getElementById('spotify-player');
+                    player.scrollIntoView({ behavior: 'smooth' });
+                });
+            </script>
+
+
+
+
+
+
+            <div class="form-group">
+                <label for="typeofevent"><i class="fas fa-globe"></i> Type of Event:</label>
+                <select id="typeofevent" name="eventtype" required>
+                    <option value="" disabled selected>- - - - - - - - - -</option>
+                    <option value="Business Meeting">Business Meeting</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Workshop">Workshop</option>
+                    <option value="Casual Corporate Party">Casual Corporate Party</option>
+                    <option value="AGM">AGM</option>
+                    <option value="Award Ceremony">Award Ceremony</option>
+                    <option value="Press Conference">Press Conference</option>
+                    <option value="Product Launch">Product Launch</option>
+                </select>

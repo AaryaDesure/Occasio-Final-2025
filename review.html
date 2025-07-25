@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review & Feedback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <style>
+        .header {
+            background: #ff7eb3;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        body {
+            font-family: "Oswald", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url(logo/gradient.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url('logo/reviewpage.avif') center/cover no-repeat;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 32px;
+        }
+
+        label {
+            display: block;
+            margin-top: 25px;
+            margin-bottom: 6px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-family: inherit;
+            font-size: 16px;
+            transition: 0.3s ease;
+            background-color: white;
+            cursor: text;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #ff9999;
+            box-shadow: 0 0 10px #ffc6c6;
+        }
+
+        .share-container {
+            position: absolute;
+            top: 35px;
+            right: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .share-btn {
+            background-color: #ff7eb3;
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 5px;
+        }
+
+        .share-btn:hover {
+            background-color: #ff3e74;
+            transform: scale(1.1);
+        }
+
+        .share-message {
+            color: #4CAF50;
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: right;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .share-message.show {
+            opacity: 1;
+        }
+
+        /* Toast Message */
+        #toast {
+            visibility: hidden;
+            opacity: 0;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 14px;
+            position: fixed;
+            z-index: 99;
+            top: 30px;
+            right: 30px;
+            font-size: 16px;
+            transition: opacity 0.5s ease;
+        }
+
+        @keyframes fadeOutToast {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .stars {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .star {
+            font-size: 26px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.3s, transform 0.2s;
+        }
+
+        .star:hover,
+        .star:hover~.star {
+            color: #ffb347;
+            transform: scale(1.2);
+        }
+
+        .star.selected {
+            color: gold;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(255, 118, 156, 0.4);
+        }
+
+        .divider {
+            border-top: 2px solid #ff7eb3;
+            margin: 50px 0 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .divider span {
+            background: #fff;
+            padding: 0 15px;
+            position: relative;
+            top: -14px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff3e74;
+        }
+
+        .review-box {
+            margin-top: 30px;
+        }
+
+        .review {
+            background: #ffffffdd;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .review .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .review .rating {
+            color: gold;
+            font-size: 18px;
+        }
+
+        .review .timestamp {
+            font-size: 12px;
+            color: gray;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .header h2 {
+                font-size: 20px;
+            }
+        }
+
+        .home-button {
+            margin-left: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            color: #003049;
+            text-decoration: none;
+            font-size: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .home-button:hover {
+            background-color: #7ddbea;
+            color: #003049;
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 48, 73, 0.3);
+            transition-delay: 5ms;
+        }
+
+        .fade-success {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            color: green;
+            margin-top: 15px;
+        }
+
+        .fade-success.show {
+            display: block;
+            opacity: 1;
+        }
+
+        .review:nth-child(even) {
+            background: #fff8f9;
+        }
+
+        .review:nth-child(odd) {
+            background: #fffef2;
+        }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .review {
+            animation: popIn 0.4s ease;
+        }
+
+        .user-status {
+            margin-top: 5px;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+        .user-status.success {
+            color: #4CAF50;
+        }
+
+        .user-status.error {
+            color: #f44336;
+        }
+
+        .event-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-option .icon {
+            font-size: 18px;
+        }
+
+        .past-events-container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .past-events-container h3 {
+            color: #ff3e74;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .events-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .event-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .event-type {
+            font-weight: bold;
+            font-size: 18px;
+            color: #ff3e74;
+        }
+
+        .event-date {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .detail-value {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .image-upload {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .image-upload:hover {
+            border-color: #ff7eb3;
+            background: rgba(255, 126, 179, 0.1);
+        }
+
+        .image-upload i {
+            font-size: 48px;
+            color: #ff7eb3;
+            margin-bottom: 10px;
+        }
+
+        .image-preview {
+            display: none;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .preview-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+
+        .preview-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .preview-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 3px solid #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .preview-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(255, 126, 179, 0.1), rgba(255, 126, 179, 0.3));
+            pointer-events: none;
+            border-radius: 8px;
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #ff3e74;
+            font-size: 14px;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .remove-image:hover {
+            background: #ff3e74;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .theme-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .theme-option {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .theme-option:hover {
+            border-color: #ff7eb3;
+            background: rgba(255, 126, 179, 0.1);
+        }
+
+        .theme-option.selected {
+            border-color: #ff7eb3;
+            background: rgba(255, 126, 179, 0.2);
+        }
+
+        .confirmation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .confirmation-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .confirmation-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .confirmation-overlay.show .confirmation-box {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .confirmation-box i {
+            font-size: 48px;
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-box h3 {
+            color: #333;
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .confirmation-box p {
+            color: #666;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .see-more-reviews {
+            text-align: center;
+            margin: 30px 0 10px;
+        }
+
+        .see-more-reviews a {
+            color: #ff3e74;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background-color: rgba(255, 126, 179, 0.1);
+        }
+
+        .see-more-reviews a:hover {
+            background-color: rgba(255, 126, 179, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 62, 116, 0.2);
+        }
+
+        .see-more-reviews i {
+            margin-left: 5px;
+        }
+
+        .share-confirmation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .share-confirmation .confirmation-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: popIn 0.3s ease;
+        }
+
+        .share-confirmation i {
+            font-size: 48px;
+            color: #ff7eb3;
+            margin-bottom: 15px;
+        }
+
+        .share-confirmation h3 {
+            color: #333;
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+
+        .share-confirmation p {
+            color: #666;
+            margin: 0;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <a href="http://localhost/OCCASIO/Homepage.html" class="home-button">
+            <i class="fas fa-home"></i>
+        </a>
+        <h1>Event Feedback Portal</h1>
+    </div>
+
+    <div class="container">
+        <h1>Share Your Experience</h1>
+        <div class="share-container">
+            <div class="share-message" id="shareMessage">Link copied!</div>
+            <button class="share-btn">
+                <i class="fas fa-share-alt"></i>
+            </button>
+        </div>
+        <hr><br>
+
+        <form id="feedbackForm" action="submit_review.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required onblur="verifyUser()">
+            <div id="userStatus" class="user-status"></div>
+
+            <label for="event">Type of Event</label>
+            <select id="event" name="event_type" required onchange="loadThemes()">
+                <option value="" disabled selected>Select an event</option>
+                <option value="Wedding">👰🏻 Wedding</option>
+                <option value="Birthday">🎂 Birthday</option>
+                <option value="Corporate">🏢 Corporate</option>
+            </select>
+
+            <div id="themeSection" style="display: none;">
+                <label>Select Theme</label>
+                <div id="themeOptions" class="theme-options">
+                    <!-- Themes will be loaded here -->
+                </div>
+                <input type="hidden" id="selectedTheme" name="selectedTheme" value="">
+            </div>
+
+            <label for="review">Your Review</label>
+            <textarea id="review" name="review_text" rows="5"
+                placeholder="Share your thoughts, suggestions, or experiences — we're all ears." required></textarea>
+
+            <div class="image-upload" onclick="document.getElementById('imageInput').click()">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Click to upload images of your event</p>
+                <input type="file" id="imageInput" name="event_images[]" multiple accept="image/*"
+                    style="display: none;" onchange="previewImages()">
+            </div>
+            <div id="imagePreview" class="image-preview"></div>
+
+            <label>Rate Your Experience</label>
+            <div class="stars" id="starRating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <input type="hidden" name="rating" id="rating">
+
+            <button type="submit">Submit Review</button>
+        </form>
+
+        <div class="see-more-reviews">
+            <a href="events.html">See more reviews <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="confirmation-overlay" id="confirmationOverlay">
+        <div class="confirmation-box">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Your review has been submitted successfully.</p>
+        </div>
+    </div>
+
+    <div class="share-confirmation" id="shareConfirmation">
+        <div class="confirmation-box">
+            <i class="fas fa-link"></i>
+            <h3>Link Copied!</h3>
+            <p>Homepage link copied to clipboard</p>
+        </div>
+    </div>
+
+    <script>
+        let selectedRating = 0;
+        const stars = document.querySelectorAll('.star');
+        const ratingInput = document.getElementById('rating');
+
+        // Star rating functionality
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = parseInt(star.getAttribute('data-value'));
+                stars.forEach(s => s.classList.remove('selected'));
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add('selected');
+                }
+                ratingInput.value = selectedRating;
+            });
+        });
+
+        // User verification
+        async function verifyUser() {
+            const nameInput = document.getElementById('name');
+            const name = nameInput.value.trim();
+            const userStatus = document.getElementById('userStatus');
+
+            if (name.length === 0) {
+                userStatus.textContent = '';
+                return;
+            }
+
+            try {
+                const response = await fetch('verify_user.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `name=${encodeURIComponent(name)}`
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    userStatus.textContent = data.error;
+                    userStatus.className = 'user-status error';
+                } else {
+                    userStatus.textContent = 'User verified!';
+                    userStatus.className = 'user-status success';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                userStatus.textContent = 'Error verifying user. Please try again.';
+                userStatus.className = 'user-status error';
+            }
+        }
+
+        // Theme loading
+        function loadThemes() {
+            const eventType = document.getElementById('event').value;
+            const themeSection = document.getElementById('themeSection');
+            const themeOptions = document.getElementById('themeOptions');
+            const selectedThemeInput = document.getElementById('selectedTheme');
+
+            themeSection.style.display = 'block';
+            themeOptions.innerHTML = '';
+
+            const themes = {
+                'Wedding': [
+                    'Royal Imperial',
+                    'Serene Beach',
+                    'Classic Elegance',
+                    'Vintage Charm',
+                    'Tropical Paradise',
+                    'Winter Wonder'
+                ],
+                'Birthday': [
+                    'Tropical Retreat',
+                    'Superhero Party',
+                    'Minimalist Luxury',
+                    'Black and Gold',
+                    'Candyland Fantasy',
+                    'Neon Bash'
+                ],
+                'Corporate': [
+                    'Tech Conference',
+                    'Networking Night',
+                    'Seminar',
+                    'Award Ceremony',
+                    'Press Conference',
+                    'Product Launch'
+                ]
+            };
+
+            themes[eventType].forEach(theme => {
+                const option = document.createElement('div');
+                option.className = 'theme-option';
+                option.textContent = theme;
+                option.onclick = function () {
+                    document.querySelectorAll('.theme-option').forEach(opt => opt.classList.remove('selected'));
+                    this.classList.add('selected');
+                    selectedThemeInput.value = theme;
+                };
+                themeOptions.appendChild(option);
+            });
+        }
+
+        // Image preview
+        function previewImages() {
+            const input = document.getElementById('imageInput');
+            const preview = document.getElementById('imagePreview');
+            preview.innerHTML = '';
+
+            if (input.files) {
+                Array.from(input.files).forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        const container = document.createElement('div');
+                        container.className = 'preview-container';
+
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+
+                        const removeBtn = document.createElement('button');
+                        removeBtn.className = 'remove-image';
+                        removeBtn.innerHTML = '×';
+                        removeBtn.onclick = function () {
+                            container.remove();
+                            // Remove the file from the input
+                            const dt = new DataTransfer();
+                            const files = input.files;
+                            for (let i = 0; i < files.length; i++) {
+                                if (i !== index) {
+                                    dt.items.add(files[i]);
+                                }
+                            }
+                            input.files = dt.files;
+                        };
+
+                        container.appendChild(img);
+                        container.appendChild(removeBtn);
+                        preview.appendChild(container);
+                    }
+                    reader.readAsDataURL(file);
+                });
+                preview.style.display = 'flex';
+            }
+        }
+
+        // Form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            if (!selectedRating) {
+                alert("Please select a rating.");
+                return;
+            }
+
+            const selectedTheme = document.getElementById('selectedTheme').value;
+            if (!selectedTheme) {
+                alert("Please select a theme.");
+                return;
+            }
+
+            const formData = new FormData(this);
+
+            fetch('submit_review.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showConfirmation();
+                        this.reset();
+                        stars.forEach(s => s.classList.remove('selected'));
+                        selectedRating = 0;
+                        ratingInput.value = '';
+                        document.getElementById('imagePreview').style.display = 'none';
+                        document.getElementById('themeSection').style.display = 'none';
+                    } else {
+                        alert(data.error || 'Error submitting review. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error submitting review. Please try again.');
+                });
+        });
+
+        function showConfirmation() {
+            const overlay = document.getElementById('confirmationOverlay');
+            overlay.classList.add('show');
+
+            setTimeout(() => {
+                overlay.classList.remove('show');
+            }, 5000);
+        }
+
+        // Initialize theme section visibility
+        document.getElementById('event').addEventListener('change', loadThemes);
+
+        // Share button functionality
+        document.querySelector('.share-btn').addEventListener('click', function () {
+            const homepageUrl = window.location.origin + '/OCCASIO/Homepage.html';
+
+            // Copy to clipboard
+            navigator.clipboard.writeText(homepageUrl)
+                .then(() => {
+                    const shareMessage = document.getElementById('shareMessage');
+                    shareMessage.classList.add('show');
+
+                    // Hide after 2 seconds
+                    setTimeout(() => {
+                        shareMessage.classList.remove('show');
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+        });
+    </script>
+</body>
+
+</html>

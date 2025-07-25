@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="annivstyles.css">
+    <style>
+        .body {
+            color: #333;
+        }
+
+        .about-you-container {
+            background: linear-gradient(to right, #ff4b5c, #ff758c);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .about-you-container h2 {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .about-you-container p {
+            font-size: 16px;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .about-you-container i {
+            font-size: 40px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        input[type="number"],
+        input[type="range"],
+        select {
+            width: 300px;
+            height: 40px;
+            padding: 10px;
+            border: 2px solid #ff4b5c;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+            display: block;
+        }
+
+        select {
+            appearance: none;
+            background: white;
+        }
+
+        input:hover,
+        select:hover,
+        input:focus,
+        select:focus {
+            border-color: #d13447;
+            box-shadow: 0 0 5px rgba(209, 52, 71, 0.5);
+        }
+
+        input[type="range"] {
+            width: 300px;
+            accent-color: #ff4b5c;
+        }
+
+        button {
+            background: linear-gradient(to right, #ff4b5c, #ff758c);
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background: #d13447;
+            transform: scale(1.05);
+            box-shadow: 0 0.7em 0.7em -0.6em gray;
+        }
+
+        .section-separator {
+            margin: 30px 0;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff4b5c;
+            position: relative;
+        }
+
+        .section-separator::before,
+        .section-separator::after {
+            content: "";
+            display: block;
+            width: 35%;
+            height: 2px;
+            background: #ff4b5c;
+            position: absolute;
+            top: 50%;
+        }
+
+        .section-separator::before {
+            left: 0;
+        }
+
+        .section-separator::after {
+            right: 0;
+        }
+
+        .explore-link {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .explore-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div>
+            <a href="Homepage.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+
+        </div>
+        <h1 class="underline">Anniversary</h1>
+        <h2>Customization Menu</h2>
+    </header>
+    <div class="form-border">
+        <div class="container" style="border: 5px solid black;">
+            <form action="submit_anniversary.php" method="POST">
+
+                <div class="about-you-container">
+                    <i class="fas fa-user"></i>
+                    <h2>Tell Us About You</h2>
+                    <p>We'd love to know a little more about you! Share your details so we can make your anniversary
+                        special.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Full Name:</label>
+                    <input type="text" id="name" name="name" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact"><i class="fas fa-phone"></i> Contact:</label>
+                    <input type="tel" id="contact" name="contact" pattern="\d{10}" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="mail"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="mail" name="mail" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="section-separator">Event Details</div>
+
+                <div class="form-group">
+                    <label for="date"><i class="fas fa-calendar-alt"></i> Select Date:</label>
+                    <input type="date" id="date" name="date" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="start_time"><i class="fas fa-clock"></i> Start Time:</label>
+                    <input type="time" id="start_time" name="start_time" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="end_time"><i class="fas fa-clock"></i> End Time:</label>
+                    <input type="time" id="end_time" name="end_time" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="people"><i class="fas fa-users"></i> Number of People:</label>
+                    <input type="number" id="people" name="people" min="10" max="500" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #e5601e; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+                <div class="form-group">
+                    <label for="venuetype"><i class="fas fa-map-marker-alt"></i> Venue Preference:</label>
+                    <select id="venuetype" name="typeofvenue" required title="Please select a venue type.">
+                        <option value="" disabled selected>- - - - - - - - - -</option>
+                        <option value="Indoor">Indoor</option>
+                        <option value="Outdoor">Outdoor</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget"><i class="fas fa-dollar-sign"></i> Budget Range:</label>
+                    <input type="range" id="budget" name="budget" min="1000" max="10000" step="100" value="5000">
+                    <span>Budget: ₹<span id="budgetValue">5000</span></span>
+                </div>
+                <div class="form-group">
+                    <a href="themes.html#Anniversary" class="explore-link"><i class="fas fa-search"></i> EXPLORE
+                        ANNIVERSARY
+                        THEMES</a>
+                    <br><br>
+                    <label for="theme"><i class="fas fa-bookmark"></i> Select Theme:</label>
+                    <select id="theme" name="theme" required>
+                        <option value="" disabled selected>- - - - - - - - - -</option>
+                        <option value="Romantic Candlelight">Romantic Candlelight</option>
+                        <option value="Rustic Garden">Rustic Garden</option>
+                        <option value="Vintage Glam">Vintage Glam</option>
+                        <option value="Starlit Skies">Starlit Skies</option>
+                        <option value="BeachFront Finedine">BeachFront Finedine</option>
+                        <option value="Luxury Affair">Luxury Affair</option>
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="cuisine"><i class="fas fa-utensils"></i> Select Cuisine:</label>
+                    <select id="cuisine" name="cuisine" required>
+                        <option value="" disabled selected>- - - - - - - - - -</option>
+                        <option value="Continental">Continental</option>
+                        <option value="Italian">Italian</option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Korean">Korean</option>
+                        <option value="British">British</option>
+                        <option value="American">American</option>
+                        <option value="Mughalai">Mughalai</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-seedling"></i> Food Preference:</label>
+                    <div class="checkbox-group" style="display: flex; gap: 20px; align-items: center; margin-top: 5px;">
+                        <label for="veg">
+                            <input type="checkbox" id="veg" name="food[]" value="veg"> Veg
+                        </label>
+
+                        <label for="nonveg">
+                            <input type="checkbox" id="nonveg" name="food[]" value="nonveg"> Non-Veg
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        const budgetSlider = document.getElementById('budget');
+        const budgetValue = document.getElementById('budgetValue');
+
+        budgetSlider.oninput = function () {
+            budgetValue.textContent = this.value;
+        }
+    </script>
+    <script>
+        const dateInput = document.getElementById('date');
+        dateInput.addEventListener('keydown', function (e) {
+            e.preventDefault();
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const dateInput = document.getElementById("date");
+            const startTimeInput = document.getElementById("start_time");
+            const endTimeInput = document.getElementById("end_time");
+            const contactInput = document.getElementById("contact");
+            const emailInput = document.getElementById("mail");
+            const submitButton = document.querySelector("button[type='submit']");
+
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.setAttribute("min", today);
+
+            function validateTime() {
+                if (startTimeInput.value && endTimeInput.value) {
+                    if (startTimeInput.value >= endTimeInput.value) {
+                        endTimeInput.setCustomValidity("End time must be after the start time.");
+                    } else {
+                        endTimeInput.setCustomValidity("");
+                    }
+                }
+            }
+
+            startTimeInput.addEventListener("change", validateTime);
+            endTimeInput.addEventListener("change", validateTime);
+            contactInput.addEventListener("input", function () {
+                if (!/^\d{10}$/.test(this.value)) {
+                    this.setCustomValidity("Mobile number must be exactly 10 digits.");
+                } else {
+                    this.setCustomValidity("");
+                }
+            });
+
+
+            emailInput.addEventListener("input", function () {
+                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if (!emailPattern.test(this.value)) {
+                    this.setCustomValidity("Please enter a valid email address (e.g., example@mail.com).");
+                } else {
+                    this.setCustomValidity("");
+                }
+            });
+            function checkAvailability() {
+                const selectedDate = dateInput.value;
+                const startTime = startTimeInput.value;
+                const endTime = endTimeInput.value;
+
+                if (!selectedDate || !startTime || !endTime) return;
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "check_availability.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onload = function () {
+                    if (this.responseText.trim() === "unavailable") {
+                        alert("The selected date and time slot is already booked. Please choose another slot.");
+                        submitButton.disabled = true;
+                    } else {
+                        submitButton.disabled = false;
+                    }
+                };
+                xhr.send("form_type=anniversary&date=" + selectedDate + "&start_time=" + startTime + "&end_time=" + endTime);
+            }
+            dateInput.addEventListener("change", checkAvailability);
+            startTimeInput.addEventListener("change", checkAvailability);
+            endTimeInput.addEventListener("change", checkAvailability);
+        });
+    </script>
+</body>
+
+</html>

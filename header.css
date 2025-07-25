@@ -1,0 +1,354 @@
+@font-face {
+    font-family: 'Playwright Cuba';
+    src: url('fonts/PlaywriteCU-VariableFont_wght.ttf') format('truetype');
+    /* Adjust the path to your file */
+    font-weight: 200;
+    font-style: normal;
+
+}
+
+/* Use the font in your CSS */
+/* .sitename h1 {
+        font-family: "Archivo Black", sans-serif;
+        font-weight: 400;
+        font-style: normal;    
+        color: rgb(0, 17, 255);   
+} */
+
+.sitelogo {
+    width: 330px;
+}
+
+body {
+    padding-bottom: 1000px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 140px;
+    justify-content: space-between;
+    position: fixed;
+    background-color: #ffffff;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: solid;
+    border-bottom-color: rgb(223, 222, 222);
+    border-bottom-width: 1px;
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
+    z-index: 100;
+}
+
+.left {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff;
+    margin-left: 35px;
+    width: 45%;
+    font-size: 120%;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.right {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #ffffff;
+    margin-right: 35px;
+    width: 45%;
+    font-size: 120%;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.website-logo {
+    width: 550px;
+    border-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin: 15px 0 0 30px;
+}
+
+.wedding-back {
+    opacity: 1;
+    margin: 140px 0 0 0;
+}
+
+.general-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+@keyframes scale {
+    from {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    to {
+        width: 80%;
+        border-radius: 10%;
+    }
+}
+
+.dropbtn {
+    display: inline-block;
+    /* Keeps the container size around its content */
+    position: relative;
+    /* Needed to position the ::after pseudo-element */
+    padding-bottom: 20px;
+    /* Space for the underline */
+    cursor: pointer;
+    /* Changes the cursor to indicate interactivity */
+}
+
+.dropbtn::after {
+    content: '';
+    /* Required to make the pseudo-element visible */
+    position: absolute;
+    left: 20px;
+    bottom: -45px;
+    width: 0;
+    /* Start with no underline */
+    height: 2px;
+    /* Adjust thickness of the underline */
+    background-color: #000;
+    /* Underline color */
+    transition: width 0.3s ease;
+    /* Controls the expansion speed */
+}
+
+.dropbtn:hover::after {
+    width: 100%;
+    /* Expands the underline to full width on hover */
+    left: 0;
+    right: 0;
+}
+
+
+.services-drop {
+    border-style: none;
+    font-weight: 700;
+    font-size: 25px;
+    background-color: rgb(255, 255, 255);
+    width: 130px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    transition: opacity 0.25s ease;
+    padding: 50px 20px 50px 20px;
+
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    top: 100px;
+    /* Adjust this value to ensure it appears below the header */
+    left: 0;
+}
+
+.dropdown-content a {
+    color: #003049;
+    padding: 20px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.25s ease;
+    cursor: pointer;
+}
+
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.dropdown:hover {
+    transition-duration: 0.s;
+    text-align: center;
+    width: 120px;
+    background-color: rgba(102, 155, 188, 0.47);
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.dropdown-content a:hover {
+    background-color: #fdf0d5;
+    border-style: solid;
+    border-left-width: 8px;
+    border-left-color: #03045e;
+    box-sizing: content-box;
+
+
+
+}
+
+.dropbtn a {
+    color: black;
+    text-decoration: none;
+}
+
+/*css for login page*/
+.header2 {
+    display: flex;
+    flex-direction: row;
+    height: 120px;
+    justify-content: space-between;
+    position: fixed;
+    background-color: #ffffff;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: solid;
+    border-bottom-color: rgb(223, 222, 222);
+    border-bottom-width: 1px;
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
+    z-index: 100;
+    font-size: small;
+}
+
+.sitelogo2 {
+    width: 300px;
+    border-radius: 30%;
+    margin: 0 0 0 10px;
+
+}
+
+.centered_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
+.contact-container {
+    display: flex;
+    background-color: rgba(255, 182, 193, 0.6);
+    border-radius: 0.4em;
+    flex-direction: column;
+    align-items: center;
+    width: 38%;
+    height: 650px;
+    right: 60px;
+    margin-top: 175px;
+    font-weight: bolder;
+    font-size: large;
+
+
+}
+
+.contact-container input {
+    font-size: large;
+    font-weight: bold;
+    font-family: system-ui, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+    border-radius: 0.2em;
+}
+
+button {
+
+    font-size: 17.5px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal;
+    background-color: rgba(193, 18, 31, 0.75);
+    color: #fdf0d5;
+    border-radius: 1em;
+    box-shadow: 7.5px;
+    opacity: 1;
+    padding: 0.25em;
+
+
+}
+
+button:hover {
+    background-color: #fefae0;
+    color: #283618;
+    text-decoration: underline;
+    border-color: #606c38;
+    box-shadow: 0 0.6em 0.6em -0.4em;
+    border-radius: 1em;
+}
+
+
+.contactfield label {
+    margin-top: 15px;
+    display: block;
+}
+
+
+
+/*css for footer*/
+
+
+
+
+.social-media-icons {
+
+    border: 2px solid #333;
+    padding: 10px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: 20px auto;
+
+}
+
+
+.social-media-icons a {
+
+    color: #333;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.social-media-icons a:hover {
+    color: #007bff;
+
+}
+
+.social-media-icons i {
+    font-size: 24px;
+}
+
+
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+a {
+    color: var(--primary-color);
+}
+
+.switch-theme button:hover {
+    transform: scale(1.05);
+    transform: translateY(-0.25em);
+    box-shadow: 0 0.7em 0.7em -0.6em gray;
+    /* Scale effect on hover */
+
+}

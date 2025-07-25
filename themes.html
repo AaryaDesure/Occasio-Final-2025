@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Themes</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            text-align: center;
+            padding: 50px 0;
+        }
+
+
+
+        .event-section {
+            margin: 80px 0;
+            /* Increased spacing */
+        }
+
+        .event-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Elegant Line Separators */
+        .section-divider {
+            width: 60%;
+            height: 2px;
+            background: #fff;
+            margin: 30px auto;
+            opacity: 0.7;
+            border-radius: 5px;
+        }
+
+        /* Scrolling Image Container */
+        .scrolling-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+        }
+
+        .scrolling-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scrollLeft 20s linear infinite;
+        }
+
+        .scrolling-content img {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .scrolling-wrapper:hover .scrolling-content {
+            animation-play-state: paused;
+        }
+
+        .scrolling-content img {
+            width: 300px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .scrolling-content img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+
+
+
+        /* Smooth Scrolling Animation */
+        @keyframes scrollLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        /* 🏠 Home Button - Initial Style */
+        .home-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 24px;
+            /* Dark Pink Border */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
+        }
+
+        /* 🏠 Initial Icon Color (Dark Pink) */
+        .home-button i {
+            color: #d81b60;
+            /* Dark Pink */
+        }
+
+        /* 🎨 Hover Effect */
+        .home-button:hover {
+            background: #6a0dad;
+            /* Purple */
+            transform: scale(1.1);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 🎨 Change Icon to Light Pink on Hover */
+        .home-button:hover i {
+            color: #ff80ab;
+            /* Light Pink */
+        }
+
+        .back-button {
+            display: inline-block;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            background: #d81b60;
+            font-size: medium;
+            color: white;
+            padding: 6px 10px;
+            /* 👈 Keep your original thickness */
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 42px;
+            /* 👈 Compact by default */
+            height: 30px;
+            /* 👈 Lock the height */
+            transition: max-width 0.3s ease, background 0.3s;
+        }
+
+        .back-link i {
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .back-text {
+            opacity: 0;
+            margin-left: 8px;
+            transition: opacity 0.2s ease;
+        }
+
+        /* 🔁 Hover Behavior */
+        .back-link:hover {
+            max-width: 160px;
+            /* expands width only */
+            background: #b7154f;
+        }
+
+        .back-link:hover .back-text {
+            opacity: 1;
+        }
+
+
+
+        .title {
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            /* Gradient Background */
+            color: white;
+            font-size: 34px;
+            font-weight: bold;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 30px auto;
+            max-width: 80%;
+            position: relative;
+        }
+
+        /* Adding subtle glowing effect */
+        .title::before {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            border-radius: 15px;
+            z-index: -1;
+            filter: blur(8px);
+            opacity: 0.6;
+        }
+
+        /* Adding a fun animated underline */
+        .title p {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .title p::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 50%;
+            height: 3px;
+            background: white;
+            border-radius: 5px;
+            transform: translateX(-50%);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .title p:hover::after {
+            width: 80%;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #d81b60;
+            /* Dark Pink */
+            color: white;
+            padding: 6px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+
+        .back-button a {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button i {
+            font-size: 18px;
+        }
+
+        .back-button:hover {
+            background: #b7154f;
+            /* Slightly Darker Pink */
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <header>
+        <div>
+            <a href="Homepage.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        <div class="title">
+            <p>✨ Explore our themes and choose what suits you ✨</p>
+        </div>
+
+    </header>
+
+    <div class="container">
+        <!-- Wedding Section -->
+        <div class="event-section" id="Wedding">
+            <div class="event-title">Wedding Themes
+                <div class="back-button">
+                    <a href="javascript:history.back()" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-text">Back to form</span>
+                    </a>
+                </div>
+
+
+            </div>
+            <div class="section-divider"></div>
+            <div class="scrolling-wrapper">
+                <div class="scrolling-content">
+                    <div class="d-inline-block text-center">
+                        <img src="logo/royalwedding1.jpg" alt="Wedding Theme 1">
+                        <div class="theme-title">Royal Imperial</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/beachwedding.jpg" alt="Wedding Theme 2">
+                        <div class="theme-title">Serene Beach</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/elegantwedding.avif" alt="Wedding Theme 3">
+                        <div class="theme-title">Classic Elegance</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/vintagewedding.jpg" alt="Wedding Theme 4">
+                        <div class="theme-title">Vintage Charm</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/tropicalwedding.webp" alt="Wedding Theme 5">
+                        <div class="theme-title">Tropical Paradise</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/winterwedding.webp" alt="Wedding Theme 3">
+                        <div class="theme-title">Winter Wonder</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Birthday Section -->
+        <div class="event-section" id="Birthday">
+            <div class="event-title">Birthday Themes
+                <div class="back-button">
+                    <a href="javascript:history.back()" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-text">Back to form</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="section-divider"></div>
+            <div class="scrolling-wrapper">
+                <div class="scrolling-content">
+                    <div class="d-inline-block text-center">
+                        <img src="logo/tropicalbirthday.jpg" alt="Birthday Theme 1">
+                        <div class="theme-title">Tropical Retreat</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/superherobday.jpg" alt="Birthday Theme 2">
+                        <div class="theme-title">Superhero Party</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/minimalbday.jpg" alt="Birthday Theme 3">
+                        <div class="theme-title">Minimalist Luxury</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/blackandgold.jpg" alt="Birthday Theme 4">
+                        <div class="theme-title">Black And Gold</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/candyland2.png" alt="Birthday Theme 5">
+                        <div class="theme-title">Candyland Fantasy</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/neonbday.jpg" alt="Birthday Theme 6">
+                        <div class="theme-title">Neon Bash</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Corporate Event Section -->
+        <div class="event-section" id="Corporate">
+            <div class="event-title">Corporate Event Themes
+                <div class="back-button">
+                    <a href="javascript:history.back()" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-text">Back to form</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="section-divider"></div>
+            <div class="scrolling-wrapper">
+                <div class="scrolling-content">
+                    <div class="d-inline-block text-center">
+                        <img src="logo/tech conference.jpg" alt="Corporate Theme 1">
+                        <div class="theme-title">Tech Conference</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/networkingevent.jpg" alt="Corporate Theme 2">
+                        <div class="theme-title">Networking Night</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/awardceremony.webp" alt="Corporate Theme 3">
+                        <div class="theme-title">Award Ceremony</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/seminar.png" alt="Corporate Theme 4">
+                        <div class="theme-title">Seminar</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/pressconference.jpg" alt="Corporate Theme 5">
+                        <div class="theme-title">Press Conference</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/productlaunch.jpg" alt="Corporate Theme 6">
+                        <div class="theme-title">Product Launch</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-section" id="Anniversary">
+            <div class="event-title">Anniversary Themes
+                <div class="back-button">
+                    <a href="javascript:history.back()" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        <span class="back-text">Back to form</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="section-divider"></div>
+            <div class="scrolling-wrapper">
+                <div class="scrolling-content">
+                    <div class="d-inline-block text-center">
+                        <img src="logo/candlelight.jpg" alt="Anniversary Theme 1">
+                        <div class="theme-title">Romantic Candlelight</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/rusticgarden.webp" alt="Anniversary Theme 2">
+                        <div class="theme-title">Rustic Garden</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/vintagedinner.webp" alt="Anniversary Theme 3">
+                        <div class="theme-title">Vintage Glam</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/nightdinner.jpg" alt="Anniversary Theme 4">
+                        <div class="theme-title">Starlit Skies</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/beachdinner.jpeg" alt="Anniversary Theme 5">
+                        <div class="theme-title">BeachFront Finedine</div>
+                    </div>
+                    <div class="d-inline-block text-center">
+                        <img src="logo/luxurydinner.webp" alt="Anniversary Theme 6">
+                        <div class="theme-title">Luxury Affair</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>

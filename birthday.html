@@ -1,0 +1,2460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="birthdaystyles.css"> <!-- External CSS -->
+    <style>
+        /* Add Google Fonts import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        .about-you-container {
+            background: linear-gradient(to right, #1e88e5, #64b5f6);
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-you-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-you-container h2 {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        .about-you-container p {
+            font-size: 18px;
+            margin-top: 10px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .about-you-container i {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .explore-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 16px;
+            color: #1e88e5;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 6px;
+            background-color: #e3f2fd;
+        }
+
+        .explore-link:hover {
+            color: #1565c0;
+            background-color: #bbdefb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.2);
+        }
+
+        .progress-container {
+            display: none;
+        }
+
+        .progress-bar {
+            display: none;
+        }
+
+        .progress-text {
+            display: none;
+        }
+
+        body {
+            padding-top: 0;
+        }
+
+        /* Enhanced Form Element Styling */
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-group label i {
+            margin-right: 10px;
+            color: #1e88e5;
+            transition: color 0.3s ease;
+            font-size: 18px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="tel"],
+        .form-group input[type="email"],
+        .form-group input[type="date"],
+        .form-group input[type="time"],
+        .form-group input[type="number"] {
+            width: 100%;
+            max-width: 400px;
+            height: 45px;
+            padding: 10px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+
+        .form-group input:hover,
+        .form-group select:hover {
+            border-color: #64b5f6;
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.1);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #1e88e5;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.1);
+            outline: none;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+        }
+
+        /* Enhanced Checkbox Styling */
+        .checkbox-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            border: 2px solid #e0e0e0;
+            margin-bottom: 0;
+        }
+
+        .checkbox-group label:hover {
+            background-color: #e3f2fd;
+            border-color: #64b5f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.1);
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #1e88e5;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked {
+            background-color: #1e88e5;
+            border-color: #1e88e5;
+        }
+
+        .checkbox-group input[type="checkbox"]:checked::after {
+            content: '✓';
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Enhanced Section Separator */
+        .section-separator {
+            margin: 40px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e88e5;
+            position: relative;
+            padding: 10px 0;
+            width: 100%;
+            display: block;
+        }
+
+        .section-separator::before,
+        .section-separator::after {
+            content: "";
+            display: block;
+            width: 35%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #1e88e5, transparent);
+            position: absolute;
+            top: 50%;
+        }
+
+        .section-separator::before {
+            left: 0;
+        }
+
+        .section-separator::after {
+            right: 0;
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 8px;
+            padding: 8px 12px;
+            background-color: #ffebee;
+            border-radius: 4px;
+            border-left: 4px solid #f44336;
+            display: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-message::before {
+            content: '⚠️';
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .form-group.has-error .error-message {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Warning Message Styling */
+        .warning-message {
+            color: #ff9800;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+            font-weight: 500;
+        }
+
+        /* Form Group Error State */
+        .form-group.has-error input,
+        .form-group.has-error select {
+            border-color: #f44336 !important;
+            background-color: #fff9f9;
+        }
+
+        /* Add error message divs after each input */
+        .form-group {
+            position: relative;
+        }
+
+        /* Submit Button Styling */
+        button[type="submit"] {
+            background: linear-gradient(to right, #1e88e5, #64b5f6);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(30, 136, 229, 0.2);
+            margin-top: 20px;
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
+            background: linear-gradient(to right, #1565c0, #1e88e5);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 5px rgba(30, 136, 229, 0.2);
+        }
+
+        /* Floating Calculator Styling */
+        .floating-calculator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            min-width: 250px;
+            border: 2px solid #1e88e5;
+        }
+
+        .calculator-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1e88e5;
+        }
+
+        .price-breakdown {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .total-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e88e5;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+
+        /* Loading Spinner Styles */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #1e88e5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Confirmation Dialog Styles */
+        .confirmation-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border: 2px solid #1e88e5;
+            animation: dialogAppear 0.3s ease-out;
+        }
+
+        @keyframes dialogAppear {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .confirmation-dialog h3 {
+            margin-top: 0;
+            color: #1e88e5;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-dialog p {
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .confirmation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .confirmation-buttons button {
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        .confirm-btn {
+            background: #1e88e5;
+            color: white;
+        }
+
+        .confirm-btn:hover {
+            background: #1565c0;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(30, 136, 229, 0.3);
+        }
+
+        .cancel-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+        }
+
+        /* Add these styles for the selectable options */
+        .selectable-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .selectable-option {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #1e88e5;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .selectable-option:hover {
+            border-color: #1e88e5;
+            box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
+            transform: translateY(-2px);
+            background-color: #e3f2fd;
+        }
+
+        .selectable-option input[type="radio"] {
+            display: none;
+        }
+
+        .selectable-option label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            width: 100%;
+        }
+
+        .selectable-option label i {
+            color: #1e88e5;
+            font-size: 20px;
+        }
+
+        .selectable-option-price {
+            margin-left: auto;
+            color: #1e88e5;
+            font-weight: bold;
+        }
+
+        .selectable-option input[type="radio"]:checked+label {
+            color: #1e88e5;
+        }
+
+        .selectable-option input[type="radio"]:checked+label::after {
+            content: '✓';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #1e88e5;
+            font-weight: bold;
+        }
+
+        .add-ons-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .add-on-option {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid #1e88e5;
+        }
+
+        .add-on-option:hover {
+            border-color: #1e88e5;
+            box-shadow: 0 2px 8px rgba(30, 136, 229, 0.2);
+            transform: translateY(-2px);
+            background-color: #e3f2fd;
+        }
+
+        .add-on-option input[type="checkbox"] {
+            display: none;
+        }
+
+        .add-on-option label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+        }
+
+        .add-on-option label i {
+            color: #1e88e5;
+            font-size: 20px;
+        }
+
+        .add-on-price {
+            margin-left: auto;
+            color: #1e88e5;
+            font-weight: bold;
+        }
+
+        .add-on-option input[type="checkbox"]:checked+label {
+            color: #1e88e5;
+        }
+
+        .add-on-option input[type="checkbox"]:checked+label .add-on-price {
+            color: #1e88e5;
+        }
+
+        /* Add tooltip styles */
+        .selectable-option {
+            position: relative;
+        }
+
+        .menu-tooltip {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #1e88e5;
+            width: 250px;
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+        }
+
+        /* Left side tooltips */
+        .selectable-option:nth-child(1) .menu-tooltip,
+        .selectable-option:nth-child(2) .menu-tooltip,
+        .selectable-option:nth-child(3) .menu-tooltip {
+            right: calc(100% + 10px);
+        }
+
+        /* Right side tooltips */
+        .selectable-option:nth-child(4) .menu-tooltip,
+        .selectable-option:nth-child(5) .menu-tooltip,
+        .selectable-option:nth-child(6) .menu-tooltip {
+            left: calc(100% + 10px);
+        }
+
+        .selectable-option:hover .menu-tooltip {
+            display: block;
+            pointer-events: auto;
+        }
+
+        .menu-tooltip h4 {
+            color: #1e88e5;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #1e88e5;
+            padding-bottom: 5px;
+        }
+
+        .menu-tooltip ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-tooltip li {
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .menu-tooltip li:last-child {
+            margin-bottom: 0;
+        }
+
+        .menu-tooltip .menu-category {
+            font-weight: bold;
+            color: #1e88e5;
+            margin-top: 8px;
+        }
+
+        /* Add arrow indicators */
+        .menu-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        /* Left side arrow */
+        .selectable-option:nth-child(1) .menu-tooltip::before,
+        .selectable-option:nth-child(2) .menu-tooltip::before,
+        .selectable-option:nth-child(3) .menu-tooltip::before {
+            right: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #1e88e5;
+        }
+
+        /* Right side arrow */
+        .selectable-option:nth-child(4) .menu-tooltip::before,
+        .selectable-option:nth-child(5) .menu-tooltip::before,
+        .selectable-option:nth-child(6) .menu-tooltip::before {
+            left: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #1e88e5 transparent transparent;
+        }
+
+        /* Ensure tooltips are always on top */
+        .selectable-options {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Add container styles to prevent overflow */
+        .selectable-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .selectable-option {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-tooltip {
+            position: absolute;
+            z-index: 9999;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Add hover state for better visibility */
+        .selectable-option:hover {
+            z-index: 9999;
+        }
+
+        /* Ensure tooltips don't get cut off */
+        @media (max-width: 768px) {
+            .menu-tooltip {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-width: 300px;
+                z-index: 9999;
+            }
+
+            .menu-tooltip::before {
+                display: none;
+            }
+        }
+
+        /* Add theme tooltip styles */
+        .theme-tooltip {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #1e88e5;
+            width: 250px;
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+        }
+
+        /* Left side tooltips */
+        .selectable-option:nth-child(1) .theme-tooltip,
+        .selectable-option:nth-child(2) .theme-tooltip,
+        .selectable-option:nth-child(3) .theme-tooltip {
+            right: calc(100% + 10px);
+        }
+
+        /* Right side tooltips */
+        .selectable-option:nth-child(4) .theme-tooltip,
+        .selectable-option:nth-child(5) .theme-tooltip,
+        .selectable-option:nth-child(6) .theme-tooltip {
+            left: calc(100% + 10px);
+        }
+
+        .selectable-option:hover .theme-tooltip {
+            display: block;
+            pointer-events: auto;
+        }
+
+        .theme-tooltip h4 {
+            color: #1e88e5;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #1e88e5;
+            padding-bottom: 5px;
+        }
+
+        .theme-tooltip p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* Add arrow indicators */
+        .theme-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        /* Left side arrow */
+        .selectable-option:nth-child(1) .theme-tooltip::before,
+        .selectable-option:nth-child(2) .theme-tooltip::before,
+        .selectable-option:nth-child(3) .theme-tooltip::before {
+            right: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #1e88e5;
+        }
+
+        /* Right side arrow */
+        .selectable-option:nth-child(4) .theme-tooltip::before,
+        .selectable-option:nth-child(5) .theme-tooltip::before,
+        .selectable-option:nth-child(6) .theme-tooltip::before {
+            left: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #1e88e5 transparent transparent;
+        }
+
+        /* Ensure tooltips don't get cut off */
+        @media (max-width: 768px) {
+            .theme-tooltip {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-width: 300px;
+                z-index: 9999;
+            }
+
+            .theme-tooltip::before {
+                display: none;
+            }
+        }
+
+        /* Add add-on tooltip styles */
+        .addon-tooltip {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #1e88e5;
+            width: 250px;
+            z-index: 9999;
+            display: none;
+            pointer-events: none;
+        }
+
+        /* Left side tooltips */
+        .add-on-option:nth-child(1) .addon-tooltip,
+        .add-on-option:nth-child(2) .addon-tooltip,
+        .add-on-option:nth-child(3) .addon-tooltip {
+            right: calc(100% + 10px);
+        }
+
+        /* Right side tooltips */
+        .add-on-option:nth-child(4) .addon-tooltip,
+        .add-on-option:nth-child(5) .addon-tooltip,
+        .add-on-option:nth-child(6) .addon-tooltip {
+            left: calc(100% + 10px);
+        }
+
+        .add-on-option:hover .addon-tooltip {
+            display: block;
+            pointer-events: auto;
+        }
+
+        .addon-tooltip h4 {
+            color: #1e88e5;
+            margin: 0 0 10px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #1e88e5;
+            padding-bottom: 5px;
+        }
+
+        .addon-tooltip p {
+            margin: 0;
+            font-size: 14px;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        /* Add arrow indicators */
+        .addon-tooltip::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        /* Left side arrow */
+        .add-on-option:nth-child(1) .addon-tooltip::before,
+        .add-on-option:nth-child(2) .addon-tooltip::before,
+        .add-on-option:nth-child(3) .addon-tooltip::before {
+            right: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #1e88e5;
+        }
+
+        /* Right side arrow */
+        .add-on-option:nth-child(4) .addon-tooltip::before,
+        .add-on-option:nth-child(5) .addon-tooltip::before,
+        .add-on-option:nth-child(6) .addon-tooltip::before {
+            left: -10px;
+            transform: translateY(-50%);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #1e88e5 transparent transparent;
+        }
+
+        /* Ensure tooltips don't get cut off */
+        @media (max-width: 768px) {
+            .addon-tooltip {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-width: 300px;
+                z-index: 9999;
+            }
+
+            .addon-tooltip::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <a href="Homepage.html" class="home-button">
+                <i class="fas fa-home"></i>
+            </a>
+        </div>
+        <h1 class="underline">Birthday</h1>
+        <h2>Customization Menu</h2>
+    </header>
+
+    <div class="floating-calculator">
+        <div class="calculator-header">
+            <i class="fas fa-calculator"></i> Budget Calculator
+        </div>
+        <div class="price-breakdown">
+            <div>Venue: <span id="venuePrice">0</span></div>
+            <div>Theme: <span id="themePrice">0</span></div>
+            <div>Cake: <span id="cakePrice">0</span></div>
+            <div>Cuisine: <span id="cuisinePrice">0</span></div>
+            <div>Duration: <span id="durationPrice">0</span></div>
+            <div>Add-ons: <span id="addonsPrice">0</span></div>
+            <div style="border-top: 1px solid #eee; margin-top: 5px; padding-top: 5px;">
+                Subtotal: <span id="subtotalPrice">0</span>
+            </div>
+            <div style="color: #666;">
+                GST (18%): <span id="gstAmount">0</span>
+            </div>
+        </div>
+        <div class="total-price">
+            Total (including GST): <span id="totalPrice">0</span>
+        </div>
+    </div>
+
+    <div class="container">
+        <form action="submit_birthday.php" method="POST">
+            <div class="about-you-container">
+                <i class="fas fa-user"></i>
+                <h2>Tell Us About You</h2>
+                <p>We'd love to know a little more about you! Fill in your details so we can make your birthday
+                    celebration amazing.</p>
+            </div>
+
+            <div class="section-separator">About You</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="full_name"><i class="fas fa-user"></i> Full Name:</label>
+                    <input type="text" id="full_name" name="full_name" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #1e88e5; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#1e88e5'; this.style.boxShadow='0 0 5px rgba(30, 136, 229, 0.5)';"
+                        onblur="this.style.borderColor='#1e88e5'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="contact"><i class="fas fa-phone"></i> Contact:</label>
+                    <input type="tel" id="contact" name="contact" pattern="\d{10}" required
+                        style="width:300px; height: 20px; padding: 10px; border: 2px solid #48cae4; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+
+                <div class="form-group">
+                    <label for="mail"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="mail" name="mail" required
+                        style="width: 300px; height: 20px; padding: 10px; border: 2px solid #48cae4; border-radius: 5px; font-size: 16px; transition: border-color 0.3s, box-shadow 0.3s; outline: none; display: block;"
+                        onfocus="this.style.borderColor='#a35c6d'; this.style.boxShadow='0 0 5px rgba(163, 92, 109, 0.5)';"
+                        onblur="this.style.borderColor='#d8a1a1'; this.style.boxShadow='none';">
+                </div>
+            </div>
+
+            <div class="section-separator">Event Details</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="date"><i class="fas fa-calendar-alt"></i> Select Date:</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="start_time"><i class="fas fa-clock"></i> Start Time:</label>
+                    <input type="time" id="start_time" name="start_time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="end_time"><i class="fas fa-clock"></i> End Time:</label>
+                    <input type="time" id="end_time" name="end_time" required>
+                </div>
+            </div>
+
+            <div class="section-separator">Venue & Theme</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label for="people"><i class="fas fa-users"></i> Number of People:</label>
+                    <input type="number" id="people" name="people" min="10" max="200" placeholder="MIN 10 / MAX 200"
+                        required>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="venue-group">
+                    <div class="form-group">
+                        <label><i class="fas fa-map-marker-alt"></i> Venue Preference:</label>
+                        <div class="selectable-options" id="venueOptions">
+                            <!-- Indoor Options -->
+                            <div class="selectable-option" data-max-guests="100">
+                                <input type="radio" id="indoorHalf" name="typeofvenue" value="Indoor Half" required>
+                                <label for="indoorHalf">
+                                    <i class="fas fa-building"></i> Indoor - Half Hall
+                                    <span class="selectable-option-price">(10-100 people) ₹5,000</span>
+                                </label>
+                            </div>
+                            <div class="selectable-option" data-min-guests="100">
+                                <input type="radio" id="indoorFull" name="typeofvenue" value="Indoor Full" required>
+                                <label for="indoorFull">
+                                    <i class="fas fa-building"></i> Indoor - Full Hall
+                                    <span class="selectable-option-price">(100-200 people) ₹8,000</span>
+                                </label>
+                            </div>
+                            <!-- Outdoor Options -->
+                            <div class="selectable-option" data-max-guests="100">
+                                <input type="radio" id="outdoorHalf" name="typeofvenue" value="Outdoor Half" required>
+                                <label for="outdoorHalf">
+                                    <i class="fas fa-tree"></i> Outdoor - Half Lawn
+                                    <span class="selectable-option-price">(10-100 people) ₹7,000</span>
+                                </label>
+                            </div>
+                            <div class="selectable-option" data-min-guests="100">
+                                <input type="radio" id="outdoorFull" name="typeofvenue" value="Outdoor Full" required>
+                                <label for="outdoorFull">
+                                    <i class="fas fa-tree"></i> Outdoor - Full Lawn
+                                    <span class="selectable-option-price">(100-200 people) ₹10,000</span>
+                                </label>
+                            </div>
+                            <!-- Hybrid Option -->
+                            <div class="selectable-option" data-min-guests="0">
+                                <input type="radio" id="venueHybrid" name="typeofvenue" value="Hybrid" required>
+                                <label for="venueHybrid">
+                                    <i class="fas fa-archway"></i> Hybrid (Whole Arena)
+                                    <span class="selectable-option-price">(10-200 people) ₹15,000</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <a href="themes.html#Birthday" class="explore-link"><i class="fas fa-search"></i> EXPLORE BIRTHDAY
+                        THEMES</a>
+                    <br><br>
+                    <label><i class="fas fa-bookmark"></i> Select Theme:</label>
+                    <div class="selectable-options">
+                        <div class="selectable-option">
+                            <input type="radio" id="themeTropical" name="theme" value="Tropical Retreat" required>
+                            <label for="themeTropical">
+                                <i class="fas fa-umbrella-beach"></i> Tropical Retreat
+                                <span class="selectable-option-price">₹6,000</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Tropical Retreat</h4>
+                                <p>Transform your venue into a lush tropical paradise with palm trees, vibrant flowers,
+                                    and beach-inspired decor. Perfect for a summer birthday celebration with a relaxed,
+                                    vacation-like atmosphere.</p>
+                            </div>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="themeSuperhero" name="theme" value="Superhero Party" required>
+                            <label for="themeSuperhero">
+                                <i class="fas fa-mask"></i> Superhero Party
+                                <span class="selectable-option-price">₹5,000</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Superhero Party</h4>
+                                <p>Bring comic book heroes to life with bold colors, cityscape backdrops, and
+                                    superhero-themed decorations. Includes custom capes and masks for guests to feel
+                                    like their favorite heroes.</p>
+                            </div>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="themeMinimalist" name="theme" value="Minimalist Luxury" required>
+                            <label for="themeMinimalist">
+                                <i class="fas fa-gem"></i> Minimalist Luxury
+                                <span class="selectable-option-price">₹5,500</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Minimalist Luxury</h4>
+                                <p>Elegant and sophisticated theme featuring clean lines, neutral colors, and subtle
+                                    metallic accents. Perfect for those who appreciate understated elegance and modern
+                                    aesthetics.</p>
+                            </div>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="themeBlackGold" name="theme" value="Black and Gold" required>
+                            <label for="themeBlackGold">
+                                <i class="fas fa-crown"></i> Black and Gold
+                                <span class="selectable-option-price">₹4,000</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Black and Gold</h4>
+                                <p>Classic and timeless theme combining the sophistication of black with the luxury of
+                                    gold. Features elegant table settings, golden accents, and dramatic lighting for a
+                                    royal celebration.</p>
+                            </div>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="themeCandyland" name="theme" value="Candyland Fantasy" required>
+                            <label for="themeCandyland">
+                                <i class="fas fa-candy-cane"></i> Candyland Fantasy
+                                <span class="selectable-option-price">₹6,500</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Candyland Fantasy</h4>
+                                <p>Sweet and playful theme featuring giant candy decorations, colorful lollipops, and
+                                    candy-themed centerpieces. Perfect for a fun, whimsical celebration that brings out
+                                    the child in everyone.</p>
+                            </div>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="themeNeon" name="theme" value="Neon Bash" required>
+                            <label for="themeNeon">
+                                <i class="fas fa-lightbulb"></i> Neon Bash
+                                <span class="selectable-option-price">₹7,000</span>
+                            </label>
+                            <div class="theme-tooltip">
+                                <h4>Neon Bash</h4>
+                                <p>High-energy theme featuring vibrant neon colors, black lights, and glowing
+                                    decorations. Perfect for a modern, energetic celebration with a nightclub-like
+                                    atmosphere.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-separator">Cuisine & Preferences</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label><i class="fas fa-utensils"></i> Select Cuisine:</label>
+                    <div class="selectable-options">
+                        <!-- Left side options -->
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineIndian" name="cuisine" value="Indian" required>
+                            <label for="cuisineIndian">
+                                <i class="fas fa-bowl-rice"></i> Indian
+                                <span class="selectable-option-price">₹400-600/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>Indian Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Vegetable Samosa</li>
+                                    <li>Paneer Tikka</li>
+                                    <li>Vegetable Pakora</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Chicken Tikka</li>
+                                    <li>Fish Amritsari</li>
+                                    <li>Mutton Seekh Kebab</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Paneer Butter Masala</li>
+                                    <li>Dal Makhani</li>
+                                    <li>Vegetable Biryani</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>Butter Chicken</li>
+                                    <li>Mutton Rogan Josh</li>
+                                    <li>Chicken Biryani</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Gulab Jamun</li>
+                                    <li>Rasmalai</li>
+                                    <li>Kheer</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineMughalai" name="cuisine" value="Mughalai" required>
+                            <label for="cuisineMughalai">
+                                <i class="fas fa-bowl-rice"></i> Mughalai
+                                <span class="selectable-option-price">₹450-650/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>Mughalai Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Hara Bhara Kebab</li>
+                                    <li>Paneer Tikka</li>
+                                    <li>Vegetable Seekh</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Seekh Kebab</li>
+                                    <li>Chicken Tikka</li>
+                                    <li>Fish Tikka</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Paneer Makhani</li>
+                                    <li>Vegetable Biryani</li>
+                                    <li>Dal Makhani</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>Mughlai Chicken</li>
+                                    <li>Mutton Rogan Josh</li>
+                                    <li>Chicken Biryani</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Shahi Tukda</li>
+                                    <li>Phirni</li>
+                                    <li>Kulfi</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineContinental" name="cuisine" value="Continental" required>
+                            <label for="cuisineContinental">
+                                <i class="fas fa-utensils"></i> Continental
+                                <span class="selectable-option-price">₹400-600/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>Continental Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Bruschetta</li>
+                                    <li>Stuffed Mushrooms</li>
+                                    <li>Spinach Artichoke Dip</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Chicken Wings</li>
+                                    <li>Shrimp Cocktail</li>
+                                    <li>Bacon Wrapped Dates</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Vegetable Risotto</li>
+                                    <li>Mushroom Stroganoff</li>
+                                    <li>Eggplant Parmesan</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>Grilled Salmon</li>
+                                    <li>Chicken Alfredo Pasta</li>
+                                    <li>Beef Stroganoff</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Tiramisu</li>
+                                    <li>Chocolate Mousse</li>
+                                    <li>Crème Brûlée</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Right side options -->
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineItalian" name="cuisine" value="Italian" required>
+                            <label for="cuisineItalian">
+                                <i class="fas fa-pizza-slice"></i> Italian
+                                <span class="selectable-option-price">₹300-500/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>Italian Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Caprese Salad</li>
+                                    <li>Bruschetta</li>
+                                    <li>Stuffed Bell Peppers</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Antipasto Platter</li>
+                                    <li>Garlic Shrimp</li>
+                                    <li>Meatballs</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Margherita Pizza</li>
+                                    <li>Vegetable Lasagna</li>
+                                    <li>Mushroom Risotto</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>Spaghetti Carbonara</li>
+                                    <li>Chicken Parmesan</li>
+                                    <li>Seafood Linguine</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Gelato</li>
+                                    <li>Panna Cotta</li>
+                                    <li>Tiramisu</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineBritish" name="cuisine" value="British" required>
+                            <label for="cuisineBritish">
+                                <i class="fas fa-utensils"></i> British
+                                <span class="selectable-option-price">₹500-700/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>British Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Vegetable Spring Rolls</li>
+                                    <li>Mushroom Pâté</li>
+                                    <li>Cheese Platter</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Scotch Eggs</li>
+                                    <li>Prawn Cocktail</li>
+                                    <li>Mini Yorkshire Puddings</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Vegetable Wellington</li>
+                                    <li>Mushroom Pie</li>
+                                    <li>Vegetable Shepherd's Pie</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>Beef Wellington</li>
+                                    <li>Fish and Chips</li>
+                                    <li>Shepherd's Pie</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Sticky Toffee Pudding</li>
+                                    <li>Eton Mess</li>
+                                    <li>Trifle</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="selectable-option">
+                            <input type="radio" id="cuisineAmerican" name="cuisine" value="American" required>
+                            <label for="cuisineAmerican">
+                                <i class="fas fa-hamburger"></i> American
+                                <span class="selectable-option-price">₹550-650/plate</span>
+                            </label>
+                            <div class="menu-tooltip">
+                                <h4>American Menu</h4>
+                                <div class="menu-category">Appetizers (Veg)</div>
+                                <ul>
+                                    <li>Mozzarella Sticks</li>
+                                    <li>Onion Rings</li>
+                                    <li>Vegetable Quesadilla</li>
+                                </ul>
+                                <div class="menu-category">Appetizers (Non-Veg)</div>
+                                <ul>
+                                    <li>Buffalo Wings</li>
+                                    <li>Nachos Supreme</li>
+                                    <li>Chicken Tenders</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Veg)</div>
+                                <ul>
+                                    <li>Veggie Burger</li>
+                                    <li>Mac & Cheese</li>
+                                    <li>Vegetable Stir Fry</li>
+                                </ul>
+                                <div class="menu-category">Main Course (Non-Veg)</div>
+                                <ul>
+                                    <li>BBQ Ribs</li>
+                                    <li>Cheeseburger</li>
+                                    <li>Grilled Chicken</li>
+                                </ul>
+                                <div class="menu-category">Dessert</div>
+                                <ul>
+                                    <li>Apple Pie</li>
+                                    <li>Chocolate Brownie</li>
+                                    <li>Cheesecake</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-seedling"></i> Food Preference:</label>
+                    <div class="checkbox-group" style="display: flex; gap: 20px; align-items: center; margin-top: 5px;">
+                        <label for="veg">
+                            <input type="checkbox" id="veg" name="food[]" value="veg"> Veg
+                        </label>
+
+                        <label for="nonveg">
+                            <input type="checkbox" id="nonveg" name="food[]" value="nonveg"> Non-Veg
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-separator">Cake Details</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label><i class="fas fa-birthday-cake"></i> Birthday Cake Flavour:</label>
+                    <div class="selectable-options">
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeChocolate" name="cakeflav" value="Chocolate" required>
+                            <label for="cakeChocolate">
+                                <i class="fas fa-cookie"></i> Chocolate
+                                <span class="selectable-option-price">₹1,800</span>
+                            </label>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeVanilla" name="cakeflav" value="Vanilla" required>
+                            <label for="cakeVanilla">
+                                <i class="fas fa-ice-cream"></i> Vanilla
+                                <span class="selectable-option-price">₹1,000</span>
+                            </label>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeStrawberry" name="cakeflav" value="Strawberry" required>
+                            <label for="cakeStrawberry">
+                                <i class="fas fa-strawberry"></i> Strawberry
+                                <span class="selectable-option-price">₹1,800</span>
+                            </label>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeRedVelvet" name="cakeflav" value="Red Velvet" required>
+                            <label for="cakeRedVelvet">
+                                <i class="fas fa-cake"></i> Red Velvet
+                                <span class="selectable-option-price">₹2,000</span>
+                            </label>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeButterscotch" name="cakeflav" value="Butterscotch" required>
+                            <label for="cakeButterscotch">
+                                <i class="fas fa-candy-cane"></i> Butterscotch
+                                <span class="selectable-option-price">₹1,500</span>
+                            </label>
+                        </div>
+                        <div class="selectable-option">
+                            <input type="radio" id="cakeCoffee" name="cakeflav" value="Coffee" required>
+                            <label for="cakeCoffee">
+                                <i class="fas fa-coffee"></i> Coffee
+                                <span class="selectable-option-price">₹1,850</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nameoncake"><i class="fas fa-signature"></i> Name on Cake and Banner:</label>
+                    <input type="text" id="nameoncake" name="nameoncake" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age"><i class="fas fa-child"></i> Age of Person:</label>
+                    <input type="number" id="age" name="age">
+                </div>
+            </div>
+
+            <div class="section-separator">Add-ons</div>
+
+            <div class="form-section">
+                <div class="form-group">
+                    <label><i class="fas fa-plus-circle"></i> Select Add-ons (Optional):</label>
+                    <div class="add-ons-container">
+                        <div class="add-on-option">
+                            <input type="checkbox" id="magicShow" name="addons[]" value="magicShow">
+                            <label for="magicShow">
+                                <i class="fas fa-magic"></i> Magic Show (1 hour)
+                                <span class="add-on-price">₹5,000</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Magic Show</h4>
+                                <p>Professional magician performing interactive tricks and illusions for 1 hour.
+                                    Includes audience participation, close-up magic, and stage performances. Perfect for
+                                    all age groups.</p>
+                            </div>
+                        </div>
+                        <div class="add-on-option">
+                            <input type="checkbox" id="photography" name="addons[]" value="photography">
+                            <label for="photography">
+                                <i class="fas fa-camera"></i> Professional Photography
+                                <span class="add-on-price">₹8,000</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Professional Photography</h4>
+                                <p>Expert photographer capturing all special moments. Includes candid shots, group
+                                    photos, and event highlights. You'll receive high-resolution edited photos within 7
+                                    days.</p>
+                            </div>
+                        </div>
+                        <div class="add-on-option">
+                            <input type="checkbox" id="videography" name="addons[]" value="videography">
+                            <label for="videography">
+                                <i class="fas fa-video"></i> Professional Videography
+                                <span class="add-on-price">₹12,000</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Professional Videography</h4>
+                                <p>High-quality video coverage of your entire event. Includes multiple camera angles,
+                                    event highlights, and a professionally edited video with background music. Delivery
+                                    within 14 days.</p>
+                            </div>
+                        </div>
+                        <div class="add-on-option">
+                            <input type="checkbox" id="games" name="addons[]" value="games">
+                            <label for="games">
+                                <i class="fas fa-gamepad"></i> Fun Games & Activities
+                                <span class="add-on-price">₹6,000</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Fun Games & Activities</h4>
+                                <p>Interactive games and activities for all age groups. Includes team games, individual
+                                    challenges, and fun competitions. All necessary equipment and prizes included.</p>
+                            </div>
+                        </div>
+                        <div class="add-on-option">
+                            <input type="checkbox" id="facePainting" name="addons[]" value="facePainting">
+                            <label for="facePainting">
+                                <i class="fas fa-paint-brush"></i> Face Painting
+                                <span class="add-on-price">₹4,000</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Face Painting</h4>
+                                <p>Professional face painter creating beautiful designs for your guests. Includes a
+                                    variety of designs suitable for all ages. Uses high-quality, skin-safe paints.</p>
+                            </div>
+                        </div>
+                        <div class="add-on-option">
+                            <input type="checkbox" id="balloonArt" name="addons[]" value="balloonArt">
+                            <label for="balloonArt">
+                                <i class="fas fa-wind"></i> Balloon Art & Decor
+                                <span class="add-on-price">₹3,500</span>
+                            </label>
+                            <div class="addon-tooltip">
+                                <h4>Balloon Art & Decor</h4>
+                                <p>Professional balloon artist creating custom decorations and sculptures. Includes
+                                    balloon arches, centerpieces, and interactive balloon art for guests. Perfect for
+                                    adding color and fun to your celebration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-separator" style="margin: 20px 0; font-size: 18px; color: #1e88e5;">Ready to Book</div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Price configurations
+        const PRICES = {
+            venue: {
+                'Indoor Half': 5000,
+                'Indoor Full': 8000,
+                'Outdoor Half': 7000,
+                'Outdoor Full': 10000,
+                'Hybrid': 15000
+            },
+            theme: {
+                'Tropical Retreat': { base: 6000, indoor: 1.0, outdoor: 1.2, hybrid: 1.3 },
+                'Superhero Party': { base: 5000, indoor: 1.0, outdoor: 1.1, hybrid: 1.2 },
+                'Minimalist Luxury': { base: 5500, indoor: 1.0, outdoor: 1.15, hybrid: 1.25 },
+                'Black and Gold': { base: 4000, indoor: 1.0, outdoor: 1.1, hybrid: 1.2 },
+                'Candyland Fantasy': { base: 6500, indoor: 1.0, outdoor: 1.2, hybrid: 1.3 },
+                'Neon Bash': { base: 7000, indoor: 1.0, outdoor: 1.25, hybrid: 1.35 }
+            },
+            cake: {
+                'Chocolate': {
+                    base: 1800, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                },
+                'Vanilla': {
+                    base: 1000, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                },
+                'Strawberry': {
+                    base: 1800, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                },
+                'Red Velvet': {
+                    base: 2000, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                },
+                'Butterscotch': {
+                    base: 1500, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                },
+                'Coffee': {
+                    base: 1850, tiers: [
+                        { min: 0, max: 20, multiplier: 1.0 },
+                        { min: 21, max: 50, multiplier: 1.5 },
+                        { min: 51, max: 100, multiplier: 2.0 },
+                        { min: 101, max: 150, multiplier: 2.5 },
+                        { min: 151, max: 200, multiplier: 3.0 }
+                    ]
+                }
+            },
+            cuisine: {
+                'Continental': { veg: 400, nonveg: 600 },
+                'Italian': { veg: 300, nonveg: 500 },
+                'Indian': { veg: 400, nonveg: 600 },
+                'British': { veg: 500, nonveg: 700 },
+                'American': { veg: 550, nonveg: 650 },
+                'Mughalai': { veg: 450, nonveg: 650 }
+            },
+            hourlyRate: 2000 // Cost per hour
+        };
+
+        // Add-ons pricing configuration
+        const ADDONS_PRICES = {
+            magicShow: 5000,
+            photography: 8000,
+            videography: 12000,
+            games: 6000,
+            facePainting: 4000,
+            balloonArt: 3500
+        };
+
+        // Progress tracking
+        const form = document.querySelector('form');
+        const progressBar = document.querySelector('.progress-bar');
+        const progressText = document.querySelector('.progress-text');
+        const requiredInputs = form.querySelectorAll('input[required], select[required]');
+        const totalFields = requiredInputs.length;
+
+        function updateProgress() {
+            let filledFields = 0;
+            requiredInputs.forEach(input => {
+                if (input.value) filledFields++;
+            });
+
+            const progress = Math.round((filledFields / totalFields) * 100);
+            progressBar.style.width = progress + '%';
+            progressText.textContent = progress + '% Complete';
+        }
+
+        // Price calculation functions
+        function calculateDurationPrice() {
+            const startTime = document.getElementById('start_time').value;
+            const endTime = document.getElementById('end_time').value;
+
+            if (!startTime || !endTime) return 0;
+
+            const start = new Date('2000-01-01 ' + startTime);
+            const end = new Date('2000-01-01 ' + endTime);
+            const hours = (end - start) / (1000 * 60 * 60);
+
+            return Math.max(0, hours * PRICES.hourlyRate);
+        }
+
+        function calculateFoodPrice() {
+            const cuisine = document.getElementById('cuisine').value;
+            const people = document.getElementById('people').value;
+            const vegChecked = document.getElementById('veg').checked;
+            const nonvegChecked = document.getElementById('nonveg').checked;
+
+            if (!cuisine || !people) return 0;
+
+            let foodPrice = 0;
+            if (vegChecked && nonvegChecked) {
+                foodPrice = (PRICES.cuisine[cuisine].veg + PRICES.cuisine[cuisine].nonveg) / 2;
+            } else if (vegChecked) {
+                foodPrice = PRICES.cuisine[cuisine].veg;
+            } else if (nonvegChecked) {
+                foodPrice = PRICES.cuisine[cuisine].nonveg;
+            }
+
+            return foodPrice * people;
+        }
+
+        function calculateAddonsTotal() {
+            let total = 0;
+            document.querySelectorAll('input[name="addons[]"]:checked').forEach(checkbox => {
+                total += ADDONS_PRICES[checkbox.value];
+            });
+            return total;
+        }
+
+        // Add this function to update theme prices in buttons
+        function updateThemeButtonPrices() {
+            const venueType = document.querySelector('input[name="typeofvenue"]:checked');
+            if (!venueType) return;
+
+            const themeOptions = document.querySelectorAll('.selectable-option input[name="theme"]');
+            themeOptions.forEach(option => {
+                const themeConfig = PRICES.theme[option.value];
+                let multiplier = 1.0;
+
+                if (venueType.value.includes('Outdoor')) {
+                    multiplier = themeConfig.outdoor;
+                } else if (venueType.value === 'Hybrid') {
+                    multiplier = themeConfig.hybrid;
+                } else {
+                    multiplier = themeConfig.indoor;
+                }
+
+                if (venueType.value.includes('Full')) {
+                    multiplier *= 1.2;
+                }
+
+                const finalPrice = Math.round(themeConfig.base * multiplier);
+                const priceSpan = option.closest('.selectable-option').querySelector('.selectable-option-price');
+                if (priceSpan) {
+                    priceSpan.textContent = `₹${finalPrice.toLocaleString()}`;
+                }
+            });
+        }
+
+        // Add function to update cake button prices
+        function updateCakeButtonPrices() {
+            const people = parseInt(document.getElementById('people').value) || 0;
+            const cakeOptions = document.querySelectorAll('.selectable-option input[name="cakeflav"]');
+
+            cakeOptions.forEach(option => {
+                const cakeConfig = PRICES.cake[option.value];
+                let multiplier = 1.0;
+
+                // Find the appropriate tier based on guest count
+                for (const tier of cakeConfig.tiers) {
+                    if (people >= tier.min && people <= tier.max) {
+                        multiplier = tier.multiplier;
+                        break;
+                    }
+                }
+
+                const finalPrice = Math.round(cakeConfig.base * multiplier);
+                const priceSpan = option.closest('.selectable-option').querySelector('.selectable-option-price');
+                if (priceSpan) {
+                    const guestRange = getGuestRangeText(people);
+                    priceSpan.textContent = `₹${finalPrice.toLocaleString()} (${guestRange})`;
+                }
+            });
+        }
+
+        // Helper function to get guest range text
+        function getGuestRangeText(people) {
+            if (people <= 20) return '1-20 guests';
+            if (people <= 50) return '21-50 guests';
+            if (people <= 100) return '51-100 guests';
+            if (people <= 150) return '101-150 guests';
+            return '151-200 guests';
+        }
+
+        // Update the updatePrices function
+        function updatePrices() {
+            // Get all selected values
+            const venueType = document.querySelector('input[name="typeofvenue"]:checked');
+            const theme = document.querySelector('input[name="theme"]:checked');
+            const cake = document.querySelector('input[name="cakeflav"]:checked');
+            const cuisine = document.querySelector('input[name="cuisine"]:checked');
+            const people = parseInt(document.getElementById('people').value) || 0;
+            const vegChecked = document.getElementById('veg').checked;
+            const nonvegChecked = document.getElementById('nonveg').checked;
+            const addons = document.querySelectorAll('input[name="addons[]"]:checked');
+
+            // Calculate venue price
+            const venuePrice = venueType ? PRICES.venue[venueType.value] : 0;
+            document.getElementById('venuePrice').textContent = formatPrice(venuePrice);
+
+            // Calculate theme price with venue multiplier
+            let themePrice = 0;
+            if (theme && venueType) {
+                const themeConfig = PRICES.theme[theme.value];
+                let multiplier = 1.0;
+
+                if (venueType.value.includes('Outdoor')) {
+                    multiplier = themeConfig.outdoor;
+                } else if (venueType.value === 'Hybrid') {
+                    multiplier = themeConfig.hybrid;
+                } else {
+                    multiplier = themeConfig.indoor;
+                }
+
+                if (venueType.value.includes('Full')) {
+                    multiplier *= 1.2;
+                }
+
+                themePrice = Math.round(themeConfig.base * multiplier);
+            }
+            document.getElementById('themePrice').textContent = formatPrice(themePrice);
+
+            // Calculate cake price with guest count multiplier
+            let cakePrice = 0;
+            if (cake && people > 0) {
+                const cakeConfig = PRICES.cake[cake.value];
+                let multiplier = 1.0;
+
+                for (const tier of cakeConfig.tiers) {
+                    if (people >= tier.min && people <= tier.max) {
+                        multiplier = tier.multiplier;
+                        break;
+                    }
+                }
+
+                cakePrice = Math.round(cakeConfig.base * multiplier);
+            }
+            document.getElementById('cakePrice').textContent = formatPrice(cakePrice);
+
+            // Calculate cuisine price
+            let cuisinePrice = 0;
+            if (cuisine && people > 0) {
+                const perPlatePrice = PRICES.cuisine[cuisine.value];
+                if (vegChecked && nonvegChecked) {
+                    cuisinePrice = ((perPlatePrice.veg + perPlatePrice.nonveg) / 2) * people;
+                } else if (vegChecked) {
+                    cuisinePrice = perPlatePrice.veg * people;
+                } else if (nonvegChecked) {
+                    cuisinePrice = perPlatePrice.nonveg * people;
+                }
+            }
+            document.getElementById('cuisinePrice').textContent = formatPrice(cuisinePrice);
+
+            // Calculate duration price
+            const durationPrice = calculateDurationPrice();
+            document.getElementById('durationPrice').textContent = formatPrice(durationPrice);
+
+            // Calculate add-ons price
+            let addonsTotal = 0;
+            addons.forEach(addon => {
+                addonsTotal += ADDONS_PRICES[addon.value];
+            });
+            document.getElementById('addonsPrice').textContent = formatPrice(addonsTotal);
+
+            // Calculate subtotal
+            const subtotal = venuePrice + themePrice + cakePrice + cuisinePrice + durationPrice + addonsTotal;
+            document.getElementById('subtotalPrice').textContent = formatPrice(subtotal);
+
+            // Calculate GST (18%)
+            const gst = subtotal * 0.18;
+            document.getElementById('gstAmount').textContent = formatPrice(Math.round(gst));
+
+            // Calculate total
+            const total = Math.round(subtotal + gst);
+            document.getElementById('totalPrice').textContent = formatPrice(total);
+
+            // Update theme button prices
+            updateThemeButtonPrices();
+
+            // Update cake button prices
+            updateCakeButtonPrices();
+        }
+
+        // Helper function to format prices with commas and currency symbol
+        function formatPrice(price) {
+            return '₹' + price.toLocaleString('en-IN');
+        }
+
+        // Update event listeners for price updates
+        document.querySelectorAll('input[name="typeofvenue"]').forEach(radio => {
+            radio.addEventListener('change', updatePrices);
+        });
+
+        document.querySelectorAll('input[name="theme"]').forEach(radio => {
+            radio.addEventListener('change', updatePrices);
+        });
+
+        document.querySelectorAll('input[name="cakeflav"]').forEach(radio => {
+            radio.addEventListener('change', updatePrices);
+        });
+
+        document.querySelectorAll('input[name="cuisine"]').forEach(radio => {
+            radio.addEventListener('change', updatePrices);
+        });
+
+        document.getElementById('people').addEventListener('input', function () {
+            updateVenueOptions();
+            updateCakeButtonPrices();
+            updatePrices();
+            validatePeople(this);
+        });
+
+        document.querySelectorAll('input[name="food[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePrices);
+        });
+
+        document.querySelectorAll('input[name="addons[]"]').forEach(checkbox => {
+            checkbox.addEventListener('change', updatePrices);
+        });
+
+        document.getElementById('start_time').addEventListener('change', updatePrices);
+        document.getElementById('end_time').addEventListener('change', updatePrices);
+
+        // Initialize prices on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updatePrices();
+        });
+
+        // Initialize theme button prices on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateThemeButtonPrices();
+        });
+
+        // Initialize cake button prices on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCakeButtonPrices();
+        });
+
+        // Validation functions
+        function validateName(input) {
+            if (!input.value) {
+                hideError(input);
+                return false;
+            }
+            const namePattern = /^[a-zA-Z\s]+$/;
+            if (!namePattern.test(input.value)) {
+                showError(input, 'Please enter a valid name (letters and spaces only)');
+                return false;
+            }
+            hideError(input);
+            return true;
+        }
+
+        function validateContact(input) {
+            if (!input.value) {
+                hideError(input);
+                return false;
+            }
+            const contactPattern = /^\d{10}$/;
+            if (!contactPattern.test(input.value)) {
+                showError(input, 'Please enter a valid 10-digit mobile number');
+                return false;
+            }
+            hideError(input);
+            return true;
+        }
+
+        function validateEmail(input) {
+            if (!input.value) {
+                hideError(input);
+                return false;
+            }
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(input.value)) {
+                showError(input, 'Please enter a valid email address');
+                return false;
+            }
+            hideError(input);
+            return true;
+        }
+
+        function validateDate(input) {
+            if (!input.value) {
+                hideError(input);
+                return false;
+            }
+            const selectedDate = new Date(input.value);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (selectedDate < today) {
+                showError(input, 'Please select a future date');
+                return false;
+            }
+
+            const sixMonthsFromNow = new Date();
+            sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
+            if (selectedDate > sixMonthsFromNow) {
+                showError(input, 'Bookings can only be made up to 6 months in advance');
+                return false;
+            }
+
+            hideError(input);
+            return true;
+        }
+
+        function validateTime(startInput, endInput) {
+            if (!startInput.value || !endInput.value) {
+                hideError(startInput);
+                hideError(endInput);
+                return false;
+            }
+
+            const startTime = new Date('2000-01-01 ' + startInput.value);
+            const endTime = new Date('2000-01-01 ' + endInput.value);
+
+            const startHour = startTime.getHours();
+            const endHour = endTime.getHours();
+
+            if (startHour < 8) {
+                showError(startInput, 'Events cannot start before 8:00 AM');
+                return false;
+            }
+
+            if (endHour >= 22) {
+                showError(endInput, 'Events must end by 10:00 PM');
+                return false;
+            }
+
+            if (endTime <= startTime) {
+                showError(endInput, 'End time must be after start time');
+                return false;
+            }
+
+            const durationInHours = (endTime - startTime) / (1000 * 60 * 60);
+
+            if (durationInHours < 1) {
+                showError(endInput, 'Minimum booking duration is 1 hour');
+                return false;
+            }
+
+            if (durationInHours > 6) {
+                showError(endInput, 'Maximum booking duration is 6 hours');
+                return false;
+            }
+
+            const startDate = new Date(document.getElementById('date').value);
+            const endDate = new Date(startDate);
+            endDate.setHours(endTime.getHours(), endTime.getMinutes());
+
+            if (endDate.getDate() !== startDate.getDate()) {
+                showError(endInput, 'Events must be completed on the same day');
+                return false;
+            }
+
+            hideError(startInput);
+            hideError(endInput);
+            return true;
+        }
+
+        function validatePeople(input) {
+            if (!input.value) {
+                hideError(input);
+                return false;
+            }
+
+            const value = parseInt(input.value);
+            if (isNaN(value)) {
+                showError(input, 'Please enter a valid number');
+                return false;
+            }
+            if (value < 10) {
+                showError(input, 'Minimum 10 guests required');
+                return false;
+            }
+            if (value > 200) {
+                showError(input, 'Maximum 200 guests allowed');
+                return false;
+            }
+
+            const venueType = document.querySelector('input[name="typeofvenue"]:checked');
+            if (venueType) {
+                if (venueType.value.includes('Half') && value > 100) {
+                    showError(input, 'Half venue capacity is 100 guests. Please select a full venue option.');
+                    return false;
+                }
+                if (venueType.value.includes('Full') && value < 100) {
+                    showError(input, 'Full venue is recommended for 100+ guests. Please select a half venue option.');
+                    return false;
+                }
+            }
+
+            hideError(input);
+            return true;
+        }
+
+        function showError(element, message) {
+            const formGroup = element.closest('.form-group');
+            formGroup.classList.add('has-error');
+
+            let errorDiv = formGroup.querySelector('.error-message');
+            if (!errorDiv) {
+                errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message';
+                formGroup.appendChild(errorDiv);
+            }
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'flex';
+        }
+
+        function hideError(element) {
+            const formGroup = element.closest('.form-group');
+            formGroup.classList.remove('has-error');
+
+            const errorDiv = formGroup.querySelector('.error-message');
+            if (errorDiv) {
+                errorDiv.style.display = 'none';
+            }
+        }
+
+        // Form submission handler
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Validate all fields
+            const isNameValid = validateName();
+            const isContactValid = validateContact();
+            const isEmailValid = validateEmail();
+            const isDateValid = validateDate();
+            const isTimeValid = validateTime();
+            const isPeopleValid = validatePeople();
+            const isVenueValid = validateVenue();
+            const isThemeValid = validateTheme();
+            const isCuisineValid = validateCuisine();
+            const isFoodPreferenceValid = validateFoodPreference();
+
+            if (isNameValid && isContactValid && isEmailValid && isDateValid &&
+                isTimeValid && isPeopleValid && isVenueValid && isThemeValid &&
+                isCuisineValid && isFoodPreferenceValid) {
+                showConfirmationDialog();
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            updateVenueOptions();
+            updateCakeButtonPrices();
+            updatePrices();
+        });
+
+        // Add event listeners for real-time validation
+        document.getElementById('full_name').addEventListener('input', function () {
+            validateName(this);
+        });
+
+        document.getElementById('contact').addEventListener('input', function () {
+            validateContact(this);
+        });
+
+        document.getElementById('mail').addEventListener('input', function () {
+            validateEmail(this);
+        });
+
+        document.getElementById('date').addEventListener('change', function () {
+            validateDate(this);
+        });
+
+        document.getElementById('start_time').addEventListener('change', function () {
+            validateTime(this, document.getElementById('end_time'));
+        });
+
+        document.getElementById('end_time').addEventListener('change', function () {
+            validateTime(document.getElementById('start_time'), this);
+        });
+
+        document.getElementById('people').addEventListener('input', function () {
+            validatePeople(this);
+        });
+
+        // Add real-time validation for radio buttons
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const groupName = this.name;
+                const checkedRadio = document.querySelector(`input[name="${groupName}"]:checked`);
+                if (checkedRadio) {
+                    hideError(checkedRadio);
+                } else {
+                    const firstRadio = document.querySelector(`input[name="${groupName}"]`);
+                    showError(firstRadio, 'Please select an option');
+                }
+            });
+        });
+
+        // Add real-time validation for checkboxes
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function () {
+                const groupName = this.name;
+                const checkedBoxes = document.querySelectorAll(`input[name="${groupName}"]:checked`);
+                if (checkedBoxes.length > 0) {
+                    hideError(this);
+                } else {
+                    showError(this, 'Please select at least one option');
+                }
+            });
+        });
+
+        // Initial validation on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Remove the automatic validation on page load
+            // Only validate when user interacts with the form
+
+            // Initialize other features
+            updateVenueOptions();
+            updateCakeButtonPrices();
+            updatePrices();
+        });
+
+        // Confirmation dialog handling
+        function showConfirmationDialog() {
+            const dialog = document.getElementById('confirmationDialog');
+            if (dialog) {
+                dialog.style.display = 'block';
+                // Add overlay to prevent interaction with the form
+                const overlay = document.createElement('div');
+                overlay.id = 'dialogOverlay';
+                overlay.style.position = 'fixed';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                overlay.style.zIndex = '9998';
+                document.body.appendChild(overlay);
+            }
+        }
+
+        function hideConfirmationDialog() {
+            const dialog = document.getElementById('confirmationDialog');
+            const overlay = document.getElementById('dialogOverlay');
+            if (dialog) {
+                dialog.style.display = 'none';
+            }
+            if (overlay) {
+                overlay.remove();
+            }
+        }
+
+        // Add event listeners for confirmation buttons
+        document.addEventListener('DOMContentLoaded', function () {
+            const confirmBtn = document.getElementById('confirmSubmit');
+            const cancelBtn = document.getElementById('cancelSubmit');
+            const dialog = document.getElementById('confirmationDialog');
+
+            if (confirmBtn) {
+                confirmBtn.addEventListener('click', function () {
+                    hideConfirmationDialog();
+                    document.getElementById('loadingOverlay').style.display = 'flex';
+                    form.submit();
+                });
+            }
+
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', hideConfirmationDialog);
+            }
+
+            // Close dialog when clicking outside
+            if (dialog) {
+                dialog.addEventListener('click', function (e) {
+                    if (e.target === dialog) {
+                        hideConfirmationDialog();
+                    }
+                });
+            }
+        });
+
+        // Close dialog with Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                hideConfirmationDialog();
+            }
+        });
+
+        // Add this function to update venue options visibility
+        function updateVenueOptions() {
+            const people = parseInt(document.getElementById('people').value) || 0;
+            const venueOptions = document.querySelectorAll('.selectable-option');
+
+            venueOptions.forEach(option => {
+                const maxGuests = option.getAttribute('data-max-guests');
+                const minGuests = option.getAttribute('data-min-guests');
+                const radio = option.querySelector('input[type="radio"]');
+
+                if (maxGuests && people > maxGuests) {
+                    option.style.display = 'none';
+                    if (radio.checked) radio.checked = false;
+                } else if (minGuests && people < minGuests) {
+                    option.style.display = 'none';
+                    if (radio.checked) radio.checked = false;
+                } else {
+                    option.style.display = 'block';
+                }
+            });
+
+            // Show warning if no options are available
+            const visibleOptions = Array.from(venueOptions).filter(option =>
+                option.style.display !== 'none'
+            );
+
+            if (visibleOptions.length === 0) {
+                showWarning(document.getElementById('people'), 'No venue options available for this number of guests');
+            } else {
+                hideWarning(document.getElementById('people'));
+            }
+        }
+
+        // Update the initial state in DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize with only half-size options visible
+            const venueOptions = document.querySelectorAll('.selectable-option');
+            venueOptions.forEach(option => {
+                const maxGuests = option.getAttribute('data-max-guests');
+                const minGuests = option.getAttribute('data-min-guests');
+
+                if (maxGuests && parseInt(maxGuests) <= 100) {
+                    option.style.display = 'block';
+                } else {
+                    option.style.display = 'none';
+                    const radio = option.querySelector('input[type="radio"]');
+                    if (radio) radio.checked = false;
+                }
+            });
+
+            // Initialize other features
+            updateCakeButtonPrices();
+            updatePrices();
+        });
+    </script>
+    <script>
+        const budgetSlider = document.getElementById('budget');
+        const budgetValue = document.getElementById('budgetValue');
+
+        budgetSlider.oninput = function () {
+            budgetValue.textContent = this.value;
+        }
+        const dateInput = document.getElementById('date');
+        dateInput.addEventListener('keydown', function (e) {
+            e.preventDefault();
+        });
+    </script>
+    <script>
+        document.getElementById("contact").addEventListener("input", function () {
+            if (!/^\d{10}$/.test(this.value)) {
+                this.setCustomValidity("Mobile number must be exactly 10 digits.");
+            } else {
+                this.setCustomValidity("");
+            }
+        });
+        document.getElementById("mail").addEventListener("input", function () {
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailPattern.test(this.value)) {
+                this.setCustomValidity("Please enter a valid email address (e.g., example@mail.com).");
+            } else {
+                this.setCustomValidity("");
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dateInput = document.getElementById("date");
+            const startTimeInput = document.getElementById("start_time");
+            const endTimeInput = document.getElementById("end_time");
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.setAttribute("min", today);
+
+            function validateTime() {
+                if (startTimeInput.value && endTimeInput.value) {
+                    if (startTimeInput.value >= endTimeInput.value) {
+                        endTimeInput.setCustomValidity("End time must be after the start time.");
+                    } else {
+                        endTimeInput.setCustomValidity("");
+                    }
+                }
+            }
+
+            startTimeInput.addEventListener("change", validateTime);
+            endTimeInput.addEventListener("change", validateTime);
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dateInput = document.getElementById("date");
+            const startTimeInput = document.getElementById("start_time");
+            const endTimeInput = document.getElementById("end_time");
+            const submitButton = document.querySelector("button[type='submit']");
+
+            function checkAvailability() {
+                const selectedDate = dateInput.value;
+                const startTime = startTimeInput.value;
+                const endTime = endTimeInput.value;
+
+                if (!selectedDate || !startTime || !endTime) return;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "check_availability.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onload = function () {
+                    if (this.responseText.trim() === "unavailable") {
+                        alert("The selected date and time slot is already booked. Please choose another slot.");
+                        submitButton.disabled = true;
+                    } else {
+                        submitButton.disabled = false;
+                    }
+                };
+
+                xhr.send("form_type=birthday&date=" + selectedDate + "&start_time=" + startTime + "&end_time=" + endTime);
+
+            }
+            dateInput.addEventListener("change", checkAvailability);
+            startTimeInput.addEventListener("change", checkAvailability);
+            endTimeInput.addEventListener("change", checkAvailability);
+        });
+    </script>
+
+    <!-- Loading Spinner -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Confirmation Dialog -->
+    <div class="confirmation-dialog" id="confirmationDialog">
+        <h3>Confirm Submission</h3>
+        <p>Are you sure you want to submit this birthday event booking? Please review your details before proceeding.
+        </p>
+        <div class="confirmation-buttons">
+            <button class="confirm-btn" id="confirmSubmit">Yes, Submit</button>
+            <button class="cancel-btn" id="cancelSubmit">Cancel</button>
+        </div>
+    </div>
+
+</body>
+
+</html>
